@@ -43,5 +43,10 @@ namespace MVCLearningDemo.Controllers
             c.Address = "Address1";
             return c;
         }
+
+        public ActionResult GetView()
+        {
+            return View("MyView");
+        }
     }
 }
