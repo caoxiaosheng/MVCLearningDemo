@@ -54,8 +54,8 @@ namespace MVCLearningDemo.Controllers
                 Salary = 20000
             };
             //ViewData["Employee"] = employee;
-            ViewBag.Employee = employee;
-            return View("MyView");
+            //ViewBag.Employee = employee;
+            return View("MyView",employee);
         }
     }
 }

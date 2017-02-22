@@ -1,4 +1,4 @@
-﻿@using BusinessEntities
+﻿@model BusinessEntities.Employee
 
 @{
     Layout = null;
@@ -20,12 +20,27 @@
     <b>Employee Detail</b><br />
     Employee Name:@employee.FirstName @employee.LastName<br />
     Wmployee Salary:@employee.Salary.ToString("C")*@
-        @{
+        @*@{
             var employee =  ViewBag.Employee;
         }
     <b>Employee Detail</b><br />
     Employee Name:@employee.FirstName @employee.LastName<br />
-    Wmployee Salary:@employee.Salary.ToString("C")
+    Wmployee Salary:@employee.Salary.ToString("C")*@
+
+    <b>Employee Detail</b><br />
+    Employee Name:@Model.FirstName @Model.LastName<br />
+    @if (Model.Salary > 15000)
+    {
+        <span style="background-color: yellow">
+            Employee Salary:@Model.Salary.ToString("C")
+        </span>
+    }
+    else
+    {
+        <span style="background-color: green">
+            Employee Salary:@Model.Salary.ToString("C")
+        </span>
+    }
 </div>
 </body>
 </html>
