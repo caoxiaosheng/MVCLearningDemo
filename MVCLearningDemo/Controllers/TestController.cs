@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BusinessEntities;
+using BusinessLayer;
 using ViewModel;
 
 namespace MVCLearningDemo.Controllers
@@ -48,23 +49,39 @@ namespace MVCLearningDemo.Controllers
 
         public ActionResult GetView()
         {
-            Employee employee = new Employee()
-            {
-                FirstName = "Sukesh",
-                LastName = "Marla",
-                Salary = 20000
-            };
+            //Employee employee = new Employee()
+            //{
+            //    FirstName = "Sukesh",
+            //    LastName = "Marla",
+            //    Salary = 20000
+            //};
             //ViewData["Employee"] = employee;
             //ViewBag.Employee = employee;
-            EmployeeViewModel employeeViewModel=new EmployeeViewModel()
-            {
-                EmployeeName = employee.FirstName+" "+employee.LastName,
-                Salary = employee.Salary.ToString("C"),
-                SalaryColor = employee.Salary>15000?"yellow":"green",
-                UserName = "Admin"
-            };
+            //EmployeeViewModel employeeViewModel=new EmployeeViewModel()
+            //{
+            //    EmployeeName = employee.FirstName+" "+employee.LastName,
+            //    Salary = employee.Salary.ToString("C"),
+            //    SalaryColor = employee.Salary>15000?"yellow":"green",
+            //    UserName = "Admin"
+            //};
 
-            return View("MyView", employeeViewModel);
+            EmployeeListViewModel employeeListViewModel=new EmployeeListViewModel();
+            EmployeeBusinessLayer employeeBusinessLayer=new EmployeeBusinessLayer();
+            var employees = employeeBusinessLayer.GetEmployees();
+            var employeeViews=new List<EmployeeViewModel>();
+            foreach (var employee in employees)
+            {
+                EmployeeViewModel employeeViewModel = new EmployeeViewModel()
+                {
+                    EmployeeName = employee.FirstName + " " + employee.LastName,
+                    Salary = employee.Salary.ToString("C"),
+                    SalaryColor = employee.Salary > 15000 ? "yellow" : "green",
+                };
+                employeeViews.Add(employeeViewModel);
+            }
+            employeeListViewModel.EmployeeViewModels = employeeViews;
+            employeeListViewModel.UserName = "Admin";
+            return View("MyView", employeeListViewModel);
         }
     }
 }
