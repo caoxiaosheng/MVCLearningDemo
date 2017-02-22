@@ -53,7 +53,8 @@ namespace MVCLearningDemo.Controllers
                 LastName = "Marla",
                 Salary = 20000
             };
-            ViewData["Employee"] = employee;
+            //ViewData["Employee"] = employee;
+            ViewBag.Employee = employee;
             return View("MyView");
         }
     }
