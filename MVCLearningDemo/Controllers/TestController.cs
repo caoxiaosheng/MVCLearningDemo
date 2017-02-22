@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BusinessEntities;
+using ViewModel;
 
 namespace MVCLearningDemo.Controllers
 {
@@ -47,7 +48,7 @@ namespace MVCLearningDemo.Controllers
 
         public ActionResult GetView()
         {
-            Employee employee=new Employee()
+            Employee employee = new Employee()
             {
                 FirstName = "Sukesh",
                 LastName = "Marla",
@@ -55,7 +56,15 @@ namespace MVCLearningDemo.Controllers
             };
             //ViewData["Employee"] = employee;
             //ViewBag.Employee = employee;
-            return View("MyView",employee);
+            EmployeeViewModel employeeViewModel=new EmployeeViewModel()
+            {
+                EmployeeName = employee.FirstName+" "+employee.LastName,
+                Salary = employee.Salary.ToString("C"),
+                SalaryColor = employee.Salary>15000?"yellow":"green",
+                UserName = "Admin"
+            };
+
+            return View("MyView", employeeViewModel);
         }
     }
 }
