@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BusinessEntities;
 
 namespace MVCLearningDemo.Controllers
 {
@@ -46,6 +47,13 @@ namespace MVCLearningDemo.Controllers
 
         public ActionResult GetView()
         {
+            Employee employee=new Employee()
+            {
+                FirstName = "Sukesh",
+                LastName = "Marla",
+                Salary = 20000
+            };
+            ViewData["Employee"] = employee;
             return View("MyView");
         }
     }

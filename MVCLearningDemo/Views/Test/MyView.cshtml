@@ -1,4 +1,5 @@
-﻿
+﻿@using BusinessEntities
+
 @{
     Layout = null;
 }
@@ -13,6 +14,12 @@
 <body>
 <div>
     welcome to my test demo
+    @{
+        var employee = (Employee)ViewData["Employee"];
+    }
+    <b>Employee Detail</b><br />
+    Employee Name:@employee.FirstName @employee.LastName<br />
+    Wmployee Salary:@employee.Salary.ToString("C")
 </div>
 </body>
 </html>
