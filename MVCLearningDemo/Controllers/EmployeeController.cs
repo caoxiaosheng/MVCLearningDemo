@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using BusinessEntities;
 using BusinessLayer;
 using ViewModel;
 
@@ -20,7 +16,7 @@ namespace MVCLearningDemo.Controllers
         }
     }
 
-    public class TestController : Controller
+    public class EmployeeController : Controller
     {
         //// GET: Test
         //public ActionResult Index()
@@ -47,7 +43,7 @@ namespace MVCLearningDemo.Controllers
             return c;
         }
 
-        public ActionResult GetView()
+        public ActionResult Index()
         {
             //Employee employee = new Employee()
             //{
@@ -81,7 +77,7 @@ namespace MVCLearningDemo.Controllers
             }
             employeeListViewModel.EmployeeViewModels = employeeViews;
             employeeListViewModel.UserName = "Admin";
-            return View("MyView", employeeListViewModel);
+            return View("Index", employeeListViewModel);
         }
     }
 }
