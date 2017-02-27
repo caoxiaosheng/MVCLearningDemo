@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using BusinessEntities;
 using BusinessLayer;
 using ViewModel;
 
@@ -83,6 +84,12 @@ namespace MVCLearningDemo.Controllers
         public ActionResult AddNew()
         {
             return View("CreateEmployee");
+        }
+
+       
+        public string SaveEmployee(Employee employee)
+        {
+            return employee.FirstName + "|" + employee.LastName + "|" + employee.Salary;
         }
     }
 }
