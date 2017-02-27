@@ -14,8 +14,9 @@
     <title>MyView</title>
 </head>
 <body>
- Hello @Model.UserName
-    <hr/>
+<a href="/Employee/AddNew">Add New</a>
+Hello @Model.UserName
+<hr/>
 <div>
     @*welcome to my test demo<br />*@
     @*@{
@@ -51,7 +52,7 @@
     <span style="background-color: @Model.SalaryColor">
         EmployeeSalary: @Model.Salary
     </span>*@
-    
+
     <table>
         <tr>
             <th>
@@ -61,17 +62,17 @@
                 Salary
             </th>
         </tr>
-         @foreach (var employee in Model.EmployeeViewModels)
-            {
-                <tr>
-                    <td>
-                        @employee.EmployeeName
-                    </td>
-                    <td style="background-color: @employee.SalaryColor">
-                        @employee.Salary
-                    </td>
-                </tr>
-            }
+        @foreach (var employee in Model.EmployeeViewModels)
+        {
+            <tr>
+                <td>
+                    @employee.EmployeeName
+                </td>
+                <td style="background-color: @employee.SalaryColor">
+                    @employee.Salary
+                </td>
+            </tr>
+        }
     </table>
 </div>
 </body>

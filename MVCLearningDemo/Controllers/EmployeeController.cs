@@ -79,5 +79,10 @@ namespace MVCLearningDemo.Controllers
             employeeListViewModel.UserName = "Admin";
             return View("Index", employeeListViewModel);
         }
+
+        public ActionResult AddNew()
+        {
+            return View("CreateEmployee");
+        }
     }
 }
