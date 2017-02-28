@@ -94,9 +94,16 @@ namespace MVCLearningDemo.Controllers
             {
                 case "Save Employee":
                     //return Content(employee.FirstName + "|" + employee.LastName + "|" + employee.Salary);
-                    EmployeeBusinessLayer employeeBusinessLayer=new EmployeeBusinessLayer();
-                    employeeBusinessLayer.SavEmployee(employee);
-                    return RedirectToAction("Index");
+                    if (ModelState.IsValid)
+                    {
+                        EmployeeBusinessLayer employeeBusinessLayer = new EmployeeBusinessLayer();
+                        employeeBusinessLayer.SavEmployee(employee);
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        return View("CreateEmployee");
+                    }
                 case "Cancel":
                     return RedirectToAction("Index");
             }
