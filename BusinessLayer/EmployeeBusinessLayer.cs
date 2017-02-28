@@ -31,5 +31,13 @@ namespace BusinessLayer
             SalesERPDAL salesErpdal=new SalesERPDAL();
             return salesErpdal.Employees.ToList();
         }
+
+        public Employee SavEmployee(Employee employee)
+        {
+            SalesERPDAL salesErpdal=new SalesERPDAL();
+            salesErpdal.Employees.Add(employee);
+            salesErpdal.SaveChanges();
+            return employee;
+        }
     }
 }

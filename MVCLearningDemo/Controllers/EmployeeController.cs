@@ -88,17 +88,20 @@ namespace MVCLearningDemo.Controllers
         }
 
 
-        //public ActionResult SaveEmployee(Employee employee, string btnSubmit)
-        //{
-        //    switch (btnSubmit)
-        //    {
-        //        case "Save Employee":
-        //            return Content(employee.FirstName + "|" + employee.LastName + "|" + employee.Salary);
-        //        case "Cancel":
-        //            return RedirectToAction("Index");
-        //    }
-        //    return new EmptyResult();
-        //}
+        public ActionResult SaveEmployee(Employee employee, string btnSubmit)
+        {
+            switch (btnSubmit)
+            {
+                case "Save Employee":
+                    //return Content(employee.FirstName + "|" + employee.LastName + "|" + employee.Salary);
+                    EmployeeBusinessLayer employeeBusinessLayer=new EmployeeBusinessLayer();
+                    employeeBusinessLayer.SavEmployee(employee);
+                    return RedirectToAction("Index");
+                case "Cancel":
+                    return RedirectToAction("Index");
+            }
+            return new EmptyResult();
+        }
         //public ActionResult SaveEmployee( )
         //{
         //    Employee employee=new Employee()
@@ -118,29 +121,29 @@ namespace MVCLearningDemo.Controllers
         //    return new EmptyResult();
         //}
 
-        public ActionResult SaveEmployee([ModelBinder(typeof(MyEmployeeModelBinder))]Employee employee, string btnSubmit)
-        {
-            
-            switch (btnSubmit)
-            {
-                case "Save Employee":
-                    return Content(employee.FirstName + "|" + employee.LastName + "|" + employee.Salary);
-                case "Cancel":
-                    return RedirectToAction("Index");
-            }
-            return new EmptyResult();
-        }
+        //public ActionResult SaveEmployee([ModelBinder(typeof(MyEmployeeModelBinder))]Employee employee, string btnSubmit)
+        //{
+
+        //    switch (btnSubmit)
+        //    {
+        //        case "Save Employee":
+        //            return Content(employee.FirstName + "|" + employee.LastName + "|" + employee.Salary);
+        //        case "Cancel":
+        //            return RedirectToAction("Index");
+        //    }
+        //    return new EmptyResult();
+        //}
     }
 
-    public class MyEmployeeModelBinder : DefaultModelBinder
-    {
-        protected override object CreateModel(ControllerContext controllerContext, ModelBindingContext bindingContext, Type modelType)
-        {
-            Employee e = new Employee();
-            e.FirstName = controllerContext.RequestContext.HttpContext.Request.Form["FirstName"];
-            e.LastName = controllerContext.RequestContext.HttpContext.Request.Form["LastName"];
-            e.Salary = int.Parse(controllerContext.RequestContext.HttpContext.Request.Form["Salary"]);
-            return e;
-        }
-    }
+    //public class MyEmployeeModelBinder : DefaultModelBinder
+    //{
+    //    protected override object CreateModel(ControllerContext controllerContext, ModelBindingContext bindingContext, Type modelType)
+    //    {
+    //        Employee e = new Employee();
+    //        e.FirstName = controllerContext.RequestContext.HttpContext.Request.Form["FirstName"];
+    //        e.LastName = controllerContext.RequestContext.HttpContext.Request.Form["LastName"];
+    //        e.Salary = int.Parse(controllerContext.RequestContext.HttpContext.Request.Form["Salary"]);
+    //        return e;
+    //    }
+    //}
 }
