@@ -14,7 +14,7 @@ namespace BusinessEntities
         [StringLength(5,ErrorMessage = "LastName不能超过5个字符")]
         public string LastName { get; set; }
 
-        public int Salary { get; set; } 
+        public int? Salary { get; set; } 
     }
 
     public class FirstNameValidation : ValidationAttribute

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using BusinessEntities;
 using BusinessLayer;
@@ -72,7 +71,7 @@ namespace MVCLearningDemo.Controllers
                 EmployeeViewModel employeeViewModel = new EmployeeViewModel()
                 {
                     EmployeeName = employee.FirstName + " " + employee.LastName,
-                    Salary = employee.Salary.ToString("C"),
+                    Salary = employee.Salary.Value.ToString("C"),
                     SalaryColor = employee.Salary > 15000 ? "yellow" : "green",
                 };
                 employeeViews.Add(employeeViewModel);
@@ -84,7 +83,7 @@ namespace MVCLearningDemo.Controllers
 
         public ActionResult AddNew()
         {
-            return View("CreateEmployee");
+            return View("CreateEmployee",new CreateEmployeeViewModel());
         }
 
 
@@ -102,7 +101,13 @@ namespace MVCLearningDemo.Controllers
                     }
                     else
                     {
-                        return View("CreateEmployee");
+                        CreateEmployeeViewModel createEmployeeViewModel=new CreateEmployeeViewModel()
+                        {
+                            FirstName = employee.FirstName,
+                            LastName = employee.LastName,
+                            Salary = employee.Salary.HasValue?employee.Salary.ToString():ModelState["Salary"].Value.AttemptedValue
+                        };
+                        return View("CreateEmployee", createEmployeeViewModel);
                     }
                 case "Cancel":
                     return RedirectToAction("Index");
