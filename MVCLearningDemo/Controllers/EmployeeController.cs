@@ -71,7 +71,7 @@ namespace MVCLearningDemo.Controllers
                 EmployeeViewModel employeeViewModel = new EmployeeViewModel()
                 {
                     EmployeeName = employee.FirstName + " " + employee.LastName,
-                    Salary = employee.Salary.Value.ToString("C"),
+                    Salary = employee.Salary.HasValue? employee.Salary.Value.ToString("C"):"0",
                     SalaryColor = employee.Salary > 15000 ? "yellow" : "green",
                 };
                 employeeViews.Add(employeeViewModel);
