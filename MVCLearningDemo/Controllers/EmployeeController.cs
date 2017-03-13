@@ -79,7 +79,7 @@ namespace MVCLearningDemo.Controllers
                 employeeViews.Add(employeeViewModel);
             }
             employeeListViewModel.EmployeeViewModels = employeeViews;
-            employeeListViewModel.UserName = "Admin";
+            employeeListViewModel.UserName = User.Identity.Name;
             return View("Index", employeeListViewModel);
         }
 
