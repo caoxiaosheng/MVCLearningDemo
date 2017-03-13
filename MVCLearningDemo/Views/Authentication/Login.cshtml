@@ -1,0 +1,29 @@
+﻿@model BusinessEntities.UserDetails
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+<div>
+    @Html.ValidationMessage("CredentialError",new {style="color:red;"})
+    @using (Html.BeginForm("DoLogin", "Authentication", FormMethod.Post))
+    {
+        @Html.LabelFor(item => item.UserName)
+        @Html.TextBoxFor(item => item.UserName)
+        <br/>
+        @Html.LabelFor(item => item.Password)
+        @Html.TextBoxFor(item => item.Password)
+        <br/>
+        <input type="submit" name="BtnSubmit" value="Login"/>
+    }
+</div>
+</body>
+</html>

@@ -17,6 +17,7 @@ namespace MVCLearningDemo.Controllers
         }
     }
 
+    [Authorize]
     public class EmployeeController : Controller
     {
         //// GET: Test
@@ -44,6 +45,7 @@ namespace MVCLearningDemo.Controllers
             return c;
         }
 
+        
         public ActionResult Index()
         {
             //Employee employee = new Employee()

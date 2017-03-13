@@ -39,5 +39,17 @@ namespace BusinessLayer
             salesErpdal.SaveChanges();
             return employee;
         }
+
+        public bool IsValidUser(UserDetails userDetails)
+        {
+            if (userDetails.UserName == "Admin" && userDetails.Password == "Admin")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
