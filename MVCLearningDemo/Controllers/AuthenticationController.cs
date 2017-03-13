@@ -31,5 +31,11 @@ namespace MVCLearningDemo.Controllers
                 return View("Login");
             }
         }
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return View("Login");
+        }
     }
 }
