@@ -19,15 +19,22 @@ namespace MVCLearningDemo.Controllers
 
         public ActionResult DoLogin(UserDetails userDetails)
         {
-            EmployeeBusinessLayer employeeBusinessLayer=new EmployeeBusinessLayer();
-            if (employeeBusinessLayer.IsValidUser(userDetails))
+            if (ModelState.IsValid)
             {
-                FormsAuthentication.SetAuthCookie(userDetails.UserName, false);
-                return RedirectToAction("Index", "Employee");
+                EmployeeBusinessLayer employeeBusinessLayer = new EmployeeBusinessLayer();
+                if (employeeBusinessLayer.IsValidUser(userDetails))
+                {
+                    FormsAuthentication.SetAuthCookie(userDetails.UserName, false);
+                    return RedirectToAction("Index", "Employee");
+                }
+                else
+                {
+                    ModelState.AddModelError("CredentialError", "用户名或密码错误^o^");
+                    return View("Login");
+                }
             }
             else
             {
-                ModelState.AddModelError("CredentialError","用户名或密码错误^o^");
                 return View("Login");
             }
         }

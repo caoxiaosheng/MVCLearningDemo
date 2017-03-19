@@ -18,6 +18,7 @@
     {
         @Html.LabelFor(item => item.UserName)
         @Html.TextBoxFor(item => item.UserName)
+        @Html.ValidationMessageFor(item=>item.UserName)
         <br/>
         @Html.LabelFor(item => item.Password)
         @Html.TextBoxFor(item => item.Password)
