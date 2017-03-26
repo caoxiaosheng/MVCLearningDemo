@@ -78,6 +78,9 @@
             </tr>
         }
     </table>
+    @{
+        Html.RenderPartial("Footer", @Model.FooterViewModel);
+    }
 </div>
 </body>
 </html>

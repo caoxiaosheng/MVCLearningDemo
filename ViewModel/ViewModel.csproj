@@ -43,6 +43,7 @@
     <Compile Include="CreateEmployeeViewModel.cs" />
     <Compile Include="EmployeeListViewModel.cs" />
     <Compile Include="EmployeeViewModel.cs" />
+    <Compile Include="FooterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

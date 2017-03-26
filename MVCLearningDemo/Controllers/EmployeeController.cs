@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using BusinessEntities;
 using BusinessLayer;
@@ -80,6 +81,12 @@ namespace MVCLearningDemo.Controllers
             }
             employeeListViewModel.EmployeeViewModels = employeeViews;
             employeeListViewModel.UserName = User.Identity.Name;
+            FooterViewModel footerViewModel=new FooterViewModel()
+            {
+                CompanyName = "喵喵喵",
+                Year = DateTime.Now.Year.ToString()
+            };
+            employeeListViewModel.FooterViewModel = footerViewModel;
             return View("Index", employeeListViewModel);
         }
 
