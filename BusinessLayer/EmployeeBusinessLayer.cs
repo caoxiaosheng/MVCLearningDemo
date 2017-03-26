@@ -40,16 +40,29 @@ namespace BusinessLayer
             return employee;
         }
 
-        public bool IsValidUser(UserDetails userDetails)
+        //public bool IsValidUser(UserDetails userDetails)
+        //{
+        //    if (userDetails.UserName == "Admin" && userDetails.Password == "Admin")
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
+
+        public UserStatus GetUserValidity(UserDetails userDetails)
         {
-            if (userDetails.UserName == "Admin" && userDetails.Password == "Admin")
+            if (userDetails.UserName == "Admin" && userDetails.UserName == "Admin")
             {
-                return true;
+                return UserStatus.AuthenticatedAdmin;
             }
-            else
+            if (userDetails.UserName == "miao" && userDetails.Password == "miao")
             {
-                return false;
+                return UserStatus.AuthenticatedUser;
             }
+            return UserStatus.NonAuthenticatedUser;
         }
     }
 }

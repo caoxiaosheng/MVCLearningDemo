@@ -19,7 +19,10 @@
     <a href="/Authentication/Logout">Logout</a>
 </div>
 <hr />
-<a href="/Employee/AddNew">Add New</a>
+@*<a href="/Employee/AddNew">Add New</a>*@
+    @{
+        Html.RenderAction("GetAddNewLink");
+    }
 <hr/>
 <div>
     @*welcome to my test demo<br />*@

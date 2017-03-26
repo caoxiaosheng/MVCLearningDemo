@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using BusinessEntities;
 using BusinessLayer;
+using MVCLearningDemo.Filter;
 using ViewModel;
 
 namespace MVCLearningDemo.Controllers
@@ -90,12 +91,13 @@ namespace MVCLearningDemo.Controllers
             return View("Index", employeeListViewModel);
         }
 
+        [AdminFilter]
         public ActionResult AddNew()
         {
             return View("CreateEmployee",new CreateEmployeeViewModel());
         }
 
-
+        [AdminFilter]
         public ActionResult SaveEmployee(Employee employee, string btnSubmit)
         {
             switch (btnSubmit)
@@ -154,6 +156,18 @@ namespace MVCLearningDemo.Controllers
         //    }
         //    return new EmptyResult();
         //}
+
+        public ActionResult GetAddNewLink()
+        {
+            if (Convert.ToBoolean(Session["IsAdmin"]))
+            {
+                return PartialView("AddNewLink");
+            }
+            else
+            {
+                return new EmptyResult();
+            }
+        }
     }
 
     //public class MyEmployeeModelBinder : DefaultModelBinder
