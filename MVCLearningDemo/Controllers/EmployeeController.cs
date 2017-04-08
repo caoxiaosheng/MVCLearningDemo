@@ -47,7 +47,7 @@ namespace MVCLearningDemo.Controllers
             return c;
         }
 
-        
+        [HeaderFooterFilter]
         public ActionResult Index()
         {
             //Employee employee = new Employee()
@@ -81,32 +81,34 @@ namespace MVCLearningDemo.Controllers
                 employeeViews.Add(employeeViewModel);
             }
             employeeListViewModel.EmployeeViewModels = employeeViews;
-            employeeListViewModel.UserName = User.Identity.Name;
-            FooterViewModel footerViewModel=new FooterViewModel()
-            {
-                CompanyName = "喵喵喵",
-                Year = DateTime.Now.Year.ToString()
-            };
-            employeeListViewModel.FooterViewModel = footerViewModel;
+            //employeeListViewModel.UserName = User.Identity.Name;
+            //FooterViewModel footerViewModel=new FooterViewModel()
+            //{
+            //    CompanyName = "喵喵喵",
+            //    Year = DateTime.Now.Year.ToString()
+            //};
+            //employeeListViewModel.FooterViewModel = footerViewModel;
             return View("Index", employeeListViewModel);
         }
 
         [AdminFilter]
+        [HeaderFooterFilter]
         public ActionResult AddNew()
         {
-            var createEmployeeViewModel=new CreateEmployeeViewModel()
-            {
-                UserName = User.Identity.Name,
-                FooterViewModel = new FooterViewModel()
-                {
-                    CompanyName = "喵喵喵",
-                    Year = DateTime.Now.Year.ToString()
-                }
-            };
+            var createEmployeeViewModel = new CreateEmployeeViewModel();
+            //{
+            //    UserName = User.Identity.Name,
+            //    FooterViewModel = new FooterViewModel()
+            //    {
+            //        CompanyName = "喵喵喵",
+            //        Year = DateTime.Now.Year.ToString()
+            //    }
+            //};
             return View("CreateEmployee", createEmployeeViewModel);
         }
 
         [AdminFilter]
+        [HeaderFooterFilter]
         public ActionResult SaveEmployee(Employee employee, string btnSubmit)
         {
             switch (btnSubmit)
@@ -121,12 +123,12 @@ namespace MVCLearningDemo.Controllers
                     }
                     else
                     {
-                        CreateEmployeeViewModel createEmployeeViewModel=new CreateEmployeeViewModel()
-                        {
-                            FirstName = employee.FirstName,
-                            LastName = employee.LastName,
-                            Salary = employee.Salary.HasValue?employee.Salary.ToString():ModelState["Salary"].Value.AttemptedValue
-                        };
+                        CreateEmployeeViewModel createEmployeeViewModel = new CreateEmployeeViewModel();
+                        //{
+                        //    FirstName = employee.FirstName,
+                        //    LastName = employee.LastName,
+                        //    Salary = employee.Salary.HasValue?employee.Salary.ToString():ModelState["Salary"].Value.AttemptedValue
+                        //};
                         return View("CreateEmployee", createEmployeeViewModel);
                     }
                 case "Cancel":
