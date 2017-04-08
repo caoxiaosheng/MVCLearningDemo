@@ -94,7 +94,16 @@ namespace MVCLearningDemo.Controllers
         [AdminFilter]
         public ActionResult AddNew()
         {
-            return View("CreateEmployee",new CreateEmployeeViewModel());
+            var createEmployeeViewModel=new CreateEmployeeViewModel()
+            {
+                UserName = User.Identity.Name,
+                FooterViewModel = new FooterViewModel()
+                {
+                    CompanyName = "喵喵喵",
+                    Year = DateTime.Now.Year.ToString()
+                }
+            };
+            return View("CreateEmployee", createEmployeeViewModel);
         }
 
         [AdminFilter]

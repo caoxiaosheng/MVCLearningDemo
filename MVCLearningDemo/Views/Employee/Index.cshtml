@@ -3,10 +3,45 @@
 @*@model EmployeeViewModel*@
 @model EmployeeListViewModel
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/MyLayout.cshtml";
 }
 
-<!DOCTYPE html>
+@section TitleSection
+{
+    MyView
+}
+
+@section ContentBody
+{
+    <div>
+        @{
+            Html.RenderAction("GetAddNewLink");
+        }
+        <table border="1">
+            <tr>
+                <th>
+                    Employee Name
+                </th>
+                <th>
+                    Salary
+                </th>
+            </tr>
+            @foreach (var employee in Model.EmployeeViewModels)
+            {
+                <tr>
+                    <td>
+                        @employee.EmployeeName
+                    </td>
+                    <td style="background-color: @employee.SalaryColor">
+                        @employee.Salary
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+}
+
+@*<!DOCTYPE html>
 
 <html>
 <head>
@@ -20,11 +55,11 @@
 </div>
 <hr />
 @*<a href="/Employee/AddNew">Add New</a>*@
-    @{
+    @*@{
         Html.RenderAction("GetAddNewLink");
     }
 <hr/>
-<div>
+<div>*@
     @*welcome to my test demo<br />*@
     @*@{
         var employee = (Employee)ViewData["Employee"];
@@ -60,7 +95,7 @@
         EmployeeSalary: @Model.Salary
     </span>*@
 
-    <table>
+    @*<table>
         <tr>
             <th>
                 Employee Name
@@ -86,4 +121,4 @@
     }
 </div>
 </body>
-</html>
+</html>*@

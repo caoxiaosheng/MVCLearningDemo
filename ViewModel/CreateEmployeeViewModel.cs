@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ViewModel
 {
-    public class CreateEmployeeViewModel
+    public class CreateEmployeeViewModel:BaseViewModel
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
