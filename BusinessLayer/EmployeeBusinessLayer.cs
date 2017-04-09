@@ -40,6 +40,13 @@ namespace BusinessLayer
             return employee;
         }
 
+        public void UploadEmployees(List<Employee> employees)
+        {
+            SalesERPDAL salesErpdal=new SalesERPDAL();
+            salesErpdal.Employees.AddRange(employees);
+            salesErpdal.SaveChanges();
+        }
+
         //public bool IsValidUser(UserDetails userDetails)
         //{
         //    if (userDetails.UserName == "Admin" && userDetails.Password == "Admin")

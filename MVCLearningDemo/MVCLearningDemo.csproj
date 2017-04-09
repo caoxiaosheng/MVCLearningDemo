@@ -129,6 +129,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
+    <Compile Include="Controllers\BulkUploadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Filter\AdminFilter.cs" />
@@ -180,6 +181,7 @@
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Employee\AddNewLink.cshtml" />
     <Content Include="Views\Shared\MyLayout.cshtml" />
+    <Content Include="Views\BulkUpload\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
