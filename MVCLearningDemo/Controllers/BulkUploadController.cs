@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
@@ -12,7 +14,7 @@ using ViewModel;
 
 namespace MVCLearningDemo.Controllers
 {
-    public class BulkUploadController:Controller
+    public class BulkUploadController:AsyncController
     {
         [AdminFilter]
         [HeaderFooterFilter]
@@ -21,9 +23,15 @@ namespace MVCLearningDemo.Controllers
             return View(new FileUploadViewModel());
         }
 
-        public ActionResult Upload(FileUploadViewModel fileUploadViewModel)
+        public async Task<ActionResult> Upload(FileUploadViewModel fileUploadViewModel)
         {
-            var employees = GetEmployees(fileUploadViewModel);
+            int t1 = Thread.CurrentThread.ManagedThreadId;
+            //var employees = GetEmployees(fileUploadViewModel);
+            var employees = await Task.Factory.StartNew<List<Employee>>(() =>
+            {
+                return GetEmployees(fileUploadViewModel);
+            });
+            int t2 = Thread.CurrentThread.ManagedThreadId;
             EmployeeBusinessLayer employeeBusinessLayer=new EmployeeBusinessLayer();
             employeeBusinessLayer.UploadEmployees(employees);
             return RedirectToAction("Index","Employee");
