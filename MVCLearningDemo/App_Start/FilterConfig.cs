@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using MVCLearningDemo.Filter;
 
 namespace MVCLearningDemo
 {
@@ -6,7 +7,8 @@ namespace MVCLearningDemo
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
+            //filters.Add(new HandleErrorAttribute());
+            filters.Add(new EmployeeExceptionFilter());
         }
     }
 }
