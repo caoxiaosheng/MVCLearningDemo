@@ -48,6 +48,7 @@ namespace MVCLearningDemo.Controllers
         }
 
         [HeaderFooterFilter]
+        [Route("Employee/List")]
         public ActionResult Index()
         {
             //Employee employee = new Employee()
