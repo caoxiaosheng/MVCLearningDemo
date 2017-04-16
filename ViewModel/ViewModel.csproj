@@ -51,6 +51,7 @@
     <Compile Include="SPA\CreateEmployeeViewModel.cs" />
     <Compile Include="SPA\EmployeeListViewModel.cs" />
     <Compile Include="SPA\EmployeeViewModel.cs" />
+    <Compile Include="SPA\FileUploadViewModel.cs" />
     <Compile Include="SPA\MainViewModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

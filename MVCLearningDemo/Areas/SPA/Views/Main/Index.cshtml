@@ -25,7 +25,19 @@
                 }
             );
         }
+        function OpenBulkUpload() {
+            $.get("/SPA/SpaBulkUpload/Index").then
+            (
+                function (r) {
+                    $("<div id='DivBulkUpload'></div>").html(r).dialog({ width: 'auto', height: 'auto', modal: true, title: "Create New Employee",
+                        close: function () {
+                            $('#DivBulkUpload').remove();
+                        } });
+                }
+            );
+        }
     </script>
+
 </head>
 <body>
 <div style="text-align:right">
