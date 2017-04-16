@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using BusinessLayer;
 using DataAccessLayer;
 
 namespace MVCLearningDemo
@@ -14,7 +15,8 @@ namespace MVCLearningDemo
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<SalesERPDAL>());
+            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<SalesERPDAL>());
+            BusinessSettings.SetBussiness();
         }
     }
 }
