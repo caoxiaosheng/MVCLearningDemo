@@ -8,6 +8,7 @@ using BusinessEntities;
 using BusinessLayer;
 using ViewModel;
 using ViewModel.SPA;
+using CreateEmployeeViewModel = ViewModel.SPA.CreateEmployeeViewModel;
 using EmployeeListViewModel = ViewModel.SPA.EmployeeListViewModel;
 using EmployeeViewModel=ViewModel.SPA.EmployeeViewModel;
 
@@ -63,6 +64,31 @@ namespace MVCLearningDemo.Areas.SPA.Controllers
             {
                 return new EmptyResult();
             }
+        }
+
+        public ActionResult AddNew()
+        {
+            CreateEmployeeViewModel createEmployeeViewModel=new CreateEmployeeViewModel();
+            return PartialView("CreateEmployee", createEmployeeViewModel);
+        }
+
+        public ActionResult SaveEmployee(Employee employee)
+        {
+            EmployeeBusinessLayer empBal = new EmployeeBusinessLayer();
+            empBal.SavEmployee(employee);
+
+            EmployeeViewModel empViewModel = new EmployeeViewModel();
+            empViewModel.EmployeeName = employee.FirstName + " " + employee.LastName;
+            empViewModel.Salary = employee.Salary.Value.ToString("C");
+            if (employee.Salary > 15000)
+            {
+                empViewModel.SalaryColor = "yellow";
+            }
+            else
+            {
+                empViewModel.SalaryColor = "green";
+            }
+            return Json(empViewModel);
         }
     }
 }

@@ -6,7 +6,26 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <script src="~/Scripts/jquery-1.12.4.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
     <title>Employee Single Page Application</title>
+    <link href="~/Content/themes/base/all.css" rel="stylesheet"/>
+    <script>
+        function OpenAddNew() {
+            $.get("/SPA/Main/AddNew").then
+            (
+                function (r) {
+                    $("<div id='DivCreateEmployee'></div>").html(r).
+                        dialog({
+                            width: 'auto', height: 'auto', modal: true, title: "Create New Employee",
+                            close: function () {
+                                $('#DivCreateEmployee').remove();
+                            }
+                        });
+                }
+            );
+        }
+    </script>
 </head>
 <body>
 <div style="text-align:right">
